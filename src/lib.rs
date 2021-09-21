@@ -99,7 +99,7 @@ impl PowermaxB4800Status {
         let temperature2 = bytes[9];
         let temperature3 = bytes[10];
         let temperature4 = bytes[11];
-        let remaining_energy = u32::from_be_bytes([bytes[12], bytes[13], bytes[14], bytes[15]]); // unit: mAh
+        let remaining_energy = u32::from_le_bytes([bytes[12], bytes[13], bytes[14], bytes[15]]); // unit: mAh
         let charging_status_code = bytes[16];
         let discharging_status_code = bytes[17];
         let charging_warning_code = bytes[18];
