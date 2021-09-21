@@ -55,7 +55,7 @@ impl PowermaxB4800 {
         }
 
         let sum: u16 = bytes[1..len - 4].iter().map(|byte| *byte as u16).sum();
-        let sum_check = u16::from_be_bytes([bytes[len - 4], bytes[len - 3]]);
+        let sum_check = u16::from_le_bytes([bytes[len - 4], bytes[len - 3]]);
 
         if sum != sum_check {
             return Err(Error::SumCheckErr);
