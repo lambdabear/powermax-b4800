@@ -73,13 +73,13 @@ impl PowermaxB4800 {
 
 #[derive(Debug, Clone)]
 pub struct PowermaxB4800Status {
-    pub voltage: u32,
-    pub current: u32,
+    pub voltage: i32,
+    pub current: i32,
     pub temperature1: u8,
     pub temperature2: u8,
     pub temperature3: u8,
     pub temperature4: u8,
-    pub remaining_energy: u32,
+    pub remaining_energy: i32,
     pub charging_status_code: u8,
     pub discharging_status_code: u8,
     pub charging_warning_code: u8,
@@ -93,13 +93,13 @@ impl PowermaxB4800Status {
             return Err(Error::DataLengthErr);
         }
 
-        let current = u32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]); // unit: mA
-        let voltage = u32::from_le_bytes([bytes[4], bytes[5], bytes[6], bytes[7]]); // unit: mV
+        let current = i32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]); // unit: mA
+        let voltage = i32::from_le_bytes([bytes[4], bytes[5], bytes[6], bytes[7]]); // unit: mV
         let temperature1 = bytes[8];
         let temperature2 = bytes[9];
         let temperature3 = bytes[10];
         let temperature4 = bytes[11];
-        let remaining_energy = u32::from_le_bytes([bytes[12], bytes[13], bytes[14], bytes[15]]); // unit: mAh
+        let remaining_energy = i32::from_le_bytes([bytes[12], bytes[13], bytes[14], bytes[15]]); // unit: mAh
         let charging_status_code = bytes[16];
         let discharging_status_code = bytes[17];
         let charging_warning_code = bytes[18];
